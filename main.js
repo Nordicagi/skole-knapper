@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.0';
+const VERSION = '1.9.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1129,14 +1129,18 @@ function attach(view) {
     else pinch = null;
   };
 
-  // Fingers move the page whenever Excalidraw's pen mode (the purple pen symbol) is on, with or without the fast ink.
-  const penMode = () => !!api()?.getAppState()?.penMode;
+  // Fingers move the page in drawing mode whenever Excalidraw's pen mode (the purple pen symbol) is on, with or without
+  // the fast ink. Other tools (select, eraser, hand) already move the page with a finger in Excalidraw itself.
+  const penMode = () => {
+    const st = api()?.getAppState();
+    return !!st?.penMode && st.activeTool?.type === 'freedraw';
+  };
 
   const down = (e) => {
     if (!onDrawing(e)) return;
     if (e.pointerType === 'touch') {
       if (stroke || penDown != null) return swallow(e); // palm while writing: ignore
-      if ((penMode() || (isOn() && penSeen())) && fingers.size < 2) fingerDown(e);
+      if (penMode() && fingers.size < 2) fingerDown(e);
       return;
     }
     if (e.pointerType !== 'pen' || stroke) return;
