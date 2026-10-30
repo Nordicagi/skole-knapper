@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.1';
+const VERSION = '1.9.2';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1112,15 +1112,52 @@ function attach(view) {
     fingers.set(e.pointerId, local(e));
     startGesture();
   };
+  const clampZoom = (z) => Math.min(30, Math.max(0.1, z));
+  // Keep the scene point that was under the fingers under the fingers.
+  const showAt = (zoom, mid) => api().updateScene({
+    appState: { zoom: { value: zoom }, scrollX: mid[0] / zoom - pinch.sceneMid[0], scrollY: mid[1] / zoom - pinch.sceneMid[1] },
+  });
   const fingerMove = (e) => {
     swallow(e);
     fingers.set(e.pointerId, local(e));
     const { mid, dist } = midOf();
-    const zoom = fingers.size > 1 && pinch.dist > 0 ? Math.min(30, Math.max(0.1, pinch.zoom * dist / pinch.dist)) : pinch.zoom;
-    // Keep the scene point that was under the fingers under the fingers.
-    api().updateScene({
-      appState: { zoom: { value: zoom }, scrollX: mid[0] / zoom - pinch.sceneMid[0], scrollY: mid[1] / zoom - pinch.sceneMid[1] },
-    });
+    // The iPad reports pinches as "gesture" events (below); use their zoom when there is one, else the finger distance.
+    const zoom = gestureZoom ?? (fingers.size > 1 && pinch.dist > 0 ? clampZoom(pinch.zoom * dist / pinch.dist) : pinch.zoom);
+    showAt(zoom, mid);
+  };
+
+  // ---- Pinch zoom from the iPad's gesture events ----
+  // Excalidraw switches pinch zoom off in pen mode (against palm zooms), so with pen mode on we zoom here, in every tool.
+  let gestureZoom = null;
+  let lastScale = 1;
+  const gestureStart = (e) => {
+    if (!api()?.getAppState()?.penMode) return;
+    swallow(e);
+    lastScale = 1;
+    gestureZoom = pinch ? pinch.zoom : null;
+  };
+  const gestureChange = (e) => {
+    const st = api()?.getAppState();
+    if (!st?.penMode) return;
+    swallow(e);
+    if (pinch) {
+      // Our fingers (drawing mode): zoom from where the pinch started, the finger code places it.
+      gestureZoom = clampZoom(pinch.zoom * e.scale);
+      showAt(gestureZoom, midOf().mid);
+      return;
+    }
+    // Other tools: Excalidraw moves the page, we only zoom around the middle of the pinch.
+    const zoom = clampZoom(st.zoom.value * e.scale / lastScale);
+    lastScale = e.scale;
+    const c = local(e);
+    const sc = toScene(c, st);
+    api().updateScene({ appState: { zoom: { value: zoom }, scrollX: c[0] / zoom - sc[0], scrollY: c[1] / zoom - sc[1] } });
+  };
+  const gestureEnd = (e) => {
+    if (gestureZoom == null && !api()?.getAppState()?.penMode) return;
+    swallow(e);
+    gestureZoom = null;
+    if (pinch) startGesture();
   };
   const fingerUp = (e) => {
     swallow(e);
@@ -1235,7 +1272,8 @@ function attach(view) {
     e.stopImmediatePropagation();
     if (e.cancelable) e.preventDefault();
   };
-  const touchEvents = ['touchstart', 'touchmove', 'touchend', 'gesturestart', 'gesturechange', 'gestureend'];
+  const touchEvents = ['touchstart', 'touchmove', 'touchend'];
+  events.push(['gesturestart', gestureStart], ['gesturechange', gestureChange], ['gestureend', gestureEnd]);
   for (const [n, f] of events) host.addEventListener(n, f, opts);
   for (const n of touchEvents) host.addEventListener(n, touch, opts);
 
