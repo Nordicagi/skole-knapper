@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.5';
+const VERSION = '1.9.6';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1220,6 +1220,7 @@ function attach(view) {
       points: [toScene(p, st)],
       pressures: [e.pressure || 0.5],
       last: p,
+      kept: p,
       lastTime: e.timeStamp,
       speed: [0, 0],
       look: {
@@ -1253,6 +1254,10 @@ function attach(view) {
       segment(ink, stroke.last, p, width(s.pressure));
       stroke.last = p;
       stroke.lastTime = s.timeStamp;
+      // The saved line keeps a point every 2 screen pixels: the ink on screen uses all of them, but a drawing
+      // with thousands of points per line gets heavy (Excalidraw's own pen keeps a few dozen).
+      if (Math.hypot(p[0] - stroke.kept[0], p[1] - stroke.kept[1]) < 2) continue;
+      stroke.kept = p;
       stroke.points.push(toScene(p, stroke.st));
       stroke.pressures.push(s.pressure || 0.5);
     }
@@ -1271,6 +1276,11 @@ function attach(view) {
     swallow(e);
     const done = stroke;
     stroke = null;
+    // Always keep the very end of the line, even if it was closer than 2 px to the last kept point.
+    if (done.kept !== done.last) {
+      done.points.push(toScene(done.last, done.st));
+      done.pressures.push(done.pressures[done.pressures.length - 1]);
+    }
     clear(tail);
     let ok = false;
     try {
@@ -1349,7 +1359,26 @@ async function handOver(view, stroke) {
   // Last argument: let Excalidraw "restore" the element, which fills in anything a freedraw line needs.
   await ea.addElementsToView(false, false, true, true);
   ea.destroy?.();
-  return view.excalidrawAPI.getSceneElements().some((e) => e.id === id && e.type === 'freedraw' && !e.isDeleted);
+  // Adding the line can drop the pen settings and change the width (seen in a real iPad drawing: width 2, no pen
+  // settings → drawn fat). Put them back on the line in the drawing itself, exactly as Excalidraw's own pen saves them.
+  const api = view.excalidrawAPI;
+  const scene = api.getSceneElements();
+  const added = scene.find((e) => e.id === id && e.type === 'freedraw' && !e.isDeleted);
+  if (!added) return false;
+  const width = st.currentItemStrokeWidth ?? added.strokeWidth;
+  const options = st.currentStrokeOptions;
+  if (added.strokeWidth !== width || (options && !added.customData?.strokeOptions)) {
+    const fixed = {
+      ...added,
+      strokeWidth: width,
+      customData: options ? { ...(added.customData || {}), strokeOptions: options } : added.customData,
+      version: added.version + 1,
+      versionNonce: Math.floor(Math.random() * 2 ** 31),
+      updated: Date.now(),
+    };
+    api.updateScene({ elements: scene.map((e) => (e.id === id ? fixed : e)) });
+  }
+  return true;
 }
 
 module.exports = function setup(plugin) {
