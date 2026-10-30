@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.8.0';
+const VERSION = '1.8.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1214,8 +1214,11 @@ function attach(view) {
   const opts = { capture: true, passive: false };
   const events = [['pointerdown', down], ['pointermove', move], ['pointerup', up], ['pointercancel', up]];
   // iOS also sends touch and gesture events; hide them from Excalidraw while we move the page, so it doesn't zoom too.
+  // preventDefault stops iOS's own pinch, which otherwise cancels our two fingers (pointercancel) before we can zoom.
   const touch = (e) => {
-    if (fingers.size || stroke) e.stopImmediatePropagation();
+    if (!fingers.size && !stroke) return;
+    e.stopImmediatePropagation();
+    if (e.cancelable) e.preventDefault();
   };
   const touchEvents = ['touchstart', 'touchmove', 'touchend', 'gesturestart', 'gesturechange', 'gestureend'];
   for (const [n, f] of events) host.addEventListener(n, f, opts);
