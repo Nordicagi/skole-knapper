@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.3';
+const VERSION = '1.9.4';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1346,8 +1346,9 @@ async function handOver(view, stroke) {
 module.exports = function setup(plugin) {
   const { Notice } = require('obsidian');
   const leaves = () => plugin.app.workspace.getLeavesOfType('excalidraw').filter((l) => l.view);
-  // Always attached: the switch below only turns the fast ink on/off; finger moving follows Excalidraw's pen mode.
-  const refresh = () => leaves().forEach((l) => attach(l.view));
+  // Only on devices where a Pencil has been used: a mouse-only PC gets nothing of ours on its drawings.
+  // The switch below only turns the fast ink on/off; finger moving follows Excalidraw's pen mode.
+  const refresh = () => penSeen() && leaves().forEach((l) => attach(l.view));
 
   plugin.addCommand({
     id: 'rask-penn',
@@ -1364,6 +1365,7 @@ module.exports = function setup(plugin) {
   // Safety net: Excalidraw can finish loading after the events above, so also attach on the first touch of a drawing.
   // Added to the window (runs first), so the drawing's own listeners are in place before the touch reaches them.
   plugin.registerDomEvent(window, 'pointerdown', (e) => {
+    if (!penSeen() && e.pointerType !== 'pen') return;
     const host = e.target?.closest?.('.excalidraw');
     if (!host || host.raskPenn) return;
     const leaf = leaves().find((l) => l.view.contentEl.contains(host));
