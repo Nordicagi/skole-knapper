@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.6';
+const VERSION = '1.10.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -989,16 +989,13 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
 // Rask penn: fast wet-ink sheet over Excalidraw (raskpenn.js), off until switched on per device.
 const RASK_PENN = (function () {
   const module = { exports: {} };
-// Rask penn: a fast pen for Excalidraw on the iPad (experiment). Nothing to switch on: it wakes up the first time
-// a Pencil touches a drawing on a device, and the mouse and phone are never touched.
-// - Pencil with Excalidraw's pen tool: the line is drawn only on our own see-through canvas, so Excalidraw is not
-//   repainted for every point. When the pen lifts, Excalidraw gets the finished line once, as a normal freedraw
-//   element (undo, frames, saving and Sync keep working).
-// - Fingers on the drawing: one finger moves the page, two fingers move and zoom. Fingers never draw, and the palm
-//   is ignored while writing. (Excalidraw's own pen-mode panning never woke up, because it never sees our Pencil.)
+// Rask penn: Excalidraw with the Pencil on the iPad. Nothing to switch on: it wakes up the first time a Pencil
+// touches a drawing on a device, and the mouse and phone are never touched.
+// - Fingers in drawing mode (with Excalidraw's pen mode, the purple pen symbol): one finger moves the page, two move
+//   and zoom; the palm is ignored while writing. Excalidraw skips both in drawing mode, so we do them.
 // - Drawings open with the pen tool ready.
-// The command "Rask penn i Excalidraw (på/av)" turns the fast ink off on this device (Excalidraw's own pen draws);
-// finger moving then still works whenever Excalidraw's pen mode (purple pen symbol) is on.
+// - Fast ink (opt-in, command "Rask penn i Excalidraw (på/av)"): the line is drawn on our own see-through canvas and
+//   handed to Excalidraw on pen-up as one freedraw element. Off by default: Excalidraw's own pen looks right.
 // Bundled into the Skole-knapper plugin by bygg-knapper.js; the plugin calls setup(plugin).
 
 // Test readout (command "Rask penn: testvisning"): a small box listing the touch signals the device sends.
@@ -1022,7 +1019,9 @@ const get = (k) => {
 const put = (k, v) => {
   try { localStorage.setItem(k, v); } catch (e) {}
 };
-const isOn = () => get(KEY) !== 'av';
+// The fast ink is opt-in: Excalidraw's own pen draws by default (the owner found that looks right every time),
+// while finger moving and zooming always work. The command switches the fast ink on for this device.
+const isOn = () => get(KEY) === 'på';
 const setOn = (on) => put(KEY, on ? 'på' : 'av');
 // Only on a device where a Pencil has been used, so touch-only devices keep Excalidraw as it is.
 const penSeen = () => get(PEN_SEEN) === 'ja';
@@ -1631,6 +1630,8 @@ module.exports = class SkoleKnapper extends Plugin {
       view.skoleKnapper = true;
       // On the phone the top bar is too narrow; the toolbar and the start page have the buttons.
       if (Platform.isPhone) return;
+      // Drawings: the buttons float inside the drawing (bottom right), not in Obsidian's top bar.
+      if (view.getViewType() === 'excalidraw') return this.floatingButtons(view, kind);
       // addAction puts each new button leftmost, so add them in reverse to keep the order.
       for (const b of BUTTONS.filter((b) => b.where.includes(kind)).reverse()) {
         const el = view.addAction(b.icon, b.label, () => {
@@ -1641,5 +1642,20 @@ module.exports = class SkoleKnapper extends Plugin {
         el.createSpan({ cls: 'skole-knapp-tekst', text: b.label });
       }
     });
+  }
+
+  // Round buttons floating over the drawing. They sit outside Excalidraw's canvas, so they never draw or move the page.
+  floatingButtons(view, kind) {
+    const bar = view.contentEl.createDiv({ cls: 'skole-flyt' });
+    for (const b of BUTTONS.filter((b) => b.where.includes(kind))) {
+      const btn = bar.createEl('button', { cls: 'skole-flyt-knapp' + (b.name === 'oppgave' ? ' skole-flyt-hoved' : '') });
+      setIcon(btn.createSpan({ cls: 'skole-flyt-ikon' }), b.icon);
+      btn.createSpan({ text: b.label });
+      btn.addEventListener('click', () => {
+        this.app.workspace.setActiveLeaf(view.leaf, { focus: true });
+        this.run(b.name);
+      });
+    }
+    this.register(() => bar.remove());
   }
 };
