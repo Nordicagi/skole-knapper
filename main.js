@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.8.1';
+const VERSION = '1.9.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -997,7 +997,8 @@ const RASK_PENN = (function () {
 // - Fingers on the drawing: one finger moves the page, two fingers move and zoom. Fingers never draw, and the palm
 //   is ignored while writing. (Excalidraw's own pen-mode panning never woke up, because it never sees our Pencil.)
 // - Drawings open with the pen tool ready.
-// The command "Rask penn i Excalidraw (på/av)" turns it off on this device (plain Excalidraw back).
+// The command "Rask penn i Excalidraw (på/av)" turns the fast ink off on this device (Excalidraw's own pen draws);
+// finger moving then still works whenever Excalidraw's pen mode (purple pen symbol) is on.
 // Bundled into the Skole-knapper plugin by bygg-knapper.js; the plugin calls setup(plugin).
 
 const KEY = 'skole-rask-penn';
@@ -1059,6 +1060,7 @@ function attach(view) {
   setTimeout(() => readyPen(view), 500);
 
   let stroke = null; // the pen line in progress
+  let penDown = null; // pointerId of a pen line Excalidraw draws itself (fast ink off)
   const fingers = new Map(); // pointerId → screen point, for moving and zooming
   let pinch = null; // the zoom and the scene point under the fingers when the gesture (re)started
 
@@ -1127,17 +1129,25 @@ function attach(view) {
     else pinch = null;
   };
 
+  // Fingers move the page whenever Excalidraw's pen mode (the purple pen symbol) is on, with or without the fast ink.
+  const penMode = () => !!api()?.getAppState()?.penMode;
+
   const down = (e) => {
-    if (!isOn() || !onDrawing(e)) return;
+    if (!onDrawing(e)) return;
     if (e.pointerType === 'touch') {
-      if (stroke) return swallow(e); // palm while writing: ignore
-      if (penSeen() && fingers.size < 2) fingerDown(e);
+      if (stroke || penDown != null) return swallow(e); // palm while writing: ignore
+      if ((penMode() || (isOn() && penSeen())) && fingers.size < 2) fingerDown(e);
       return;
     }
     if (e.pointerType !== 'pen' || stroke) return;
     if (!penSeen()) {
       put(PEN_SEEN, 'ja');
       readyPen(view);
+    }
+    // Fast ink off: Excalidraw draws this line itself; we only note the pen is down, to ignore the palm.
+    if (!isOn()) {
+      penDown = e.pointerId;
+      return;
     }
     const st = api()?.getAppState();
     if (!st || st.activeTool?.type !== 'freedraw') return;
@@ -1169,7 +1179,7 @@ function attach(view) {
 
   const move = (e) => {
     if (fingers.has(e.pointerId)) return fingerMove(e);
-    if (stroke && e.pointerType === 'touch') return swallow(e);
+    if ((stroke || penDown != null) && e.pointerType === 'touch') return swallow(e);
     if (!stroke || e.pointerId !== stroke.id) return;
     swallow(e);
     // Coalesced events give every pen sample since the last frame, not just one.
@@ -1195,6 +1205,7 @@ function attach(view) {
 
   const up = async (e) => {
     if (fingers.has(e.pointerId)) return fingerUp(e);
+    if (e.pointerId === penDown) penDown = null;
     if (!stroke || e.pointerId !== stroke.id) return;
     swallow(e);
     const done = stroke;
@@ -1279,7 +1290,8 @@ async function handOver(view, stroke) {
 module.exports = function setup(plugin) {
   const { Notice } = require('obsidian');
   const leaves = () => plugin.app.workspace.getLeavesOfType('excalidraw').filter((l) => l.view);
-  const refresh = () => leaves().forEach((l) => (isOn() ? attach(l.view) : l.view.raskPenn?.()));
+  // Always attached: the switch below only turns the fast ink on/off; finger moving follows Excalidraw's pen mode.
+  const refresh = () => leaves().forEach((l) => attach(l.view));
 
   plugin.addCommand({
     id: 'rask-penn',
@@ -1287,8 +1299,7 @@ module.exports = function setup(plugin) {
     icon: 'pen-tool',
     callback: () => {
       setOn(!isOn());
-      refresh();
-      new Notice('Rask penn ' + (isOn() ? 'på' : 'av (vanlig Excalidraw)') + ' på denne enheten');
+      new Notice('Rask penn ' + (isOn() ? 'på' : 'av (Excalidraws egen penn)') + ' på denne enheten');
     },
   });
   plugin.app.workspace.onLayoutReady(refresh);
@@ -1297,7 +1308,7 @@ module.exports = function setup(plugin) {
   // Safety net: Excalidraw can finish loading after the events above, so also attach on the first touch of a drawing.
   // Added to the window (runs first), so the drawing's own listeners are in place before the touch reaches them.
   plugin.registerDomEvent(window, 'pointerdown', (e) => {
-    const host = isOn() && e.target?.closest?.('.excalidraw');
+    const host = e.target?.closest?.('.excalidraw');
     if (!host || host.raskPenn) return;
     const leaf = leaves().find((l) => l.view.contentEl.contains(host));
     if (leaf) attach(leaf.view);
