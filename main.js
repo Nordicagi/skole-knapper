@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.4';
+const VERSION = '1.9.5';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1080,7 +1080,11 @@ function attach(view) {
     return [e.clientX - r.left, e.clientY - r.top];
   };
   const toScene = (p, st) => [p[0] / st.zoom.value - st.scrollX, p[1] / st.zoom.value - st.scrollY];
-  const width = (pressure) => stroke.look.size * (0.4 + 0.9 * (pressure || 0.5));
+  // Same thickness as Excalidraw's finished line (perfect-freehand): size × (1 − 2·thinning·(0.5 − pressure)).
+  const width = (pressure) => {
+    const p = stroke.look.constant ? 0.5 : pressure || 0.5;
+    return Math.max(0.5, stroke.look.size * (1 - 2 * stroke.look.thinning * (0.5 - p)));
+  };
   // Only the drawing itself; toolbars and menus keep working as normal.
   const onDrawing = (e) => e.target && e.target.tagName === 'CANVAS';
   const swallow = (e) => {
@@ -1221,8 +1225,10 @@ function attach(view) {
       look: {
         color: st.currentItemStrokeColor,
         opacity: (st.currentItemOpacity ?? 100) / 100,
-        // Excalidraw draws freedraw with perfect-freehand at about 4.25 × strokeWidth; this is close enough for wet ink.
-        size: (st.currentItemStrokeWidth || 1) * 2.1 * st.zoom.value,
+        // Excalidraw draws freedraw with perfect-freehand at 4.25 × strokeWidth, shaped by the chosen pen's options.
+        size: (st.currentItemStrokeWidth || 1) * 4.25 * st.zoom.value,
+        thinning: st.currentStrokeOptions?.options?.thinning ?? 0.6,
+        constant: !!st.currentStrokeOptions?.constantPressure,
       },
     };
     style(ink);
@@ -1320,13 +1326,16 @@ async function handOver(view, stroke) {
   ea.style.opacity = st.currentItemOpacity ?? 100;
   ea.style.roughness = st.currentItemRoughness ?? 0;
   ea.style.strokeStyle = 'solid';
-  ea.style.backgroundColor = 'transparent';
+  ea.style.backgroundColor = st.currentItemBackgroundColor ?? 'transparent';
+  ea.style.fillStyle = st.currentItemFillStyle ?? 'solid';
   const pts = stroke.points.length > 1 ? stroke.points : [stroke.points[0], stroke.points[0]];
   const id = ea.addLine(pts);
   const el = ea.getElement(id);
   el.type = 'freedraw';
   el.pressures = stroke.pressures.length === pts.length ? stroke.pressures : pts.map(() => 0.5);
   el.simulatePressure = false;
+  // The chosen Excalidraw pen (thin, fine tip, highlighter…) is stored on each line; without it the line is drawn fat.
+  if (st.currentStrokeOptions) el.customData = { ...(el.customData || {}), strokeOptions: st.currentStrokeOptions };
   el.lastCommittedPoint = null;
   el.roundness = null;
   for (const k of ['startBinding', 'endBinding', 'startArrowhead', 'endArrowhead', 'polygon']) delete el[k];
