@@ -32,6 +32,21 @@
   pointer-events: none;
   z-index: 5;
 }
+/* Rask penn test readout: small box top-left, never takes touches. */
+.skole-rask-test {
+  position: fixed;
+  top: 60px;
+  left: 12px;
+  z-index: 9999;
+  max-width: 360px;
+  padding: 8px 10px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+  font: 12px/1.35 var(--font-monospace);
+  white-space: pre-wrap;
+  pointer-events: none;
+}
 /* The drawing handles every finger itself (moving and zooming), so the iPad must not pinch-zoom the page. */
 .excalidraw canvas {
   touch-action: none;

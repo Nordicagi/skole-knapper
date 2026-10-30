@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.9.2';
+const VERSION = '1.9.3';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1001,6 +1001,16 @@ const RASK_PENN = (function () {
 // finger moving then still works whenever Excalidraw's pen mode (purple pen symbol) is on.
 // Bundled into the Skole-knapper plugin by bygg-knapper.js; the plugin calls setup(plugin).
 
+// Test readout (command "Rask penn: testvisning"): a small box listing the touch signals the device sends.
+let readout = null;
+const lines = [];
+function log(msg) {
+  if (!readout) return;
+  lines.push(msg);
+  if (lines.length > 14) lines.shift();
+  readout.textContent = lines.join('\n');
+}
+
 const KEY = 'skole-rask-penn';
 const PEN_SEEN = 'skole-penn-sett';
 // How far ahead (in ms) the ink is guessed from the pen's speed, to hide the web view's delay. 0 = off.
@@ -1110,13 +1120,17 @@ function attach(view) {
     swallow(e);
     host.setPointerCapture?.(e.pointerId);
     fingers.set(e.pointerId, local(e));
+    log('vi: finger ' + fingers.size + ' tatt');
     startGesture();
   };
   const clampZoom = (z) => Math.min(30, Math.max(0.1, z));
   // Keep the scene point that was under the fingers under the fingers.
-  const showAt = (zoom, mid) => api().updateScene({
-    appState: { zoom: { value: zoom }, scrollX: mid[0] / zoom - pinch.sceneMid[0], scrollY: mid[1] / zoom - pinch.sceneMid[1] },
-  });
+  const showAt = (zoom, mid) => {
+    api().updateScene({
+      appState: { zoom: { value: zoom }, scrollX: mid[0] / zoom - pinch.sceneMid[0], scrollY: mid[1] / zoom - pinch.sceneMid[1] },
+    });
+    if (fingers.size > 1 || gestureZoom != null) log('vi: zoom ' + zoom.toFixed(2) + ' → er nå ' + api().getAppState().zoom.value.toFixed(2));
+  };
   const fingerMove = (e) => {
     swallow(e);
     fingers.set(e.pointerId, local(e));
@@ -1356,6 +1370,32 @@ module.exports = function setup(plugin) {
     if (leaf) attach(leaf.view);
   }, { capture: true });
   plugin.register(() => leaves().forEach((l) => l.view.raskPenn?.()));
+
+  // Test readout: everything that reaches the window, before anyone (us or Excalidraw) handles it.
+  plugin.addCommand({
+    id: 'rask-penn-test',
+    name: 'Rask penn: testvisning (på/av)',
+    icon: 'bug',
+    callback: () => {
+      if (readout) {
+        readout.remove();
+        readout = null;
+        return;
+      }
+      readout = document.body.createDiv({ cls: 'skole-rask-test' });
+      lines.length = 0;
+      const st = leaves()[0]?.view.excalidrawAPI?.getAppState();
+      log('Testvisning på. Penn-modus: ' + (st ? st.penMode : '?') + ', verktøy: ' + (st ? st.activeTool?.type : '?'));
+      log('Klyp med to fingre i tegningen, ta skjermbilde.');
+    },
+  });
+  const spy = (name, describe) => plugin.registerDomEvent(window, name, (e) => readout && log(name + ' ' + describe(e)), { capture: true });
+  spy('pointerdown', (e) => e.pointerType + ' på ' + (e.target?.tagName || '?'));
+  spy('pointercancel', (e) => e.pointerType);
+  spy('touchstart', (e) => e.touches.length + ' finger');
+  spy('gesturestart', () => '');
+  spy('gesturechange', (e) => 'skala ' + (e.scale ? e.scale.toFixed(2) : '?'));
+  spy('gestureend', () => '');
 };
 
   return module.exports;
