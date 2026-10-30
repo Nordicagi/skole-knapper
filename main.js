@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.7.0';
+const VERSION = '1.7.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1153,11 +1153,13 @@ function attach(view) {
     const done = stroke;
     stroke = null;
     clear(tail);
+    let ok = false;
     try {
-      await handOver(view, done);
+      ok = await handOver(view, done);
     } catch (err) {
       console.error('Rask penn', err);
     }
+    if (!ok) return giveUp(view);
     clear(ink);
   };
 
@@ -1176,7 +1178,16 @@ function attach(view) {
   };
 }
 
-// Give Excalidraw the finished line as one normal freedraw element.
+// If Excalidraw did not take the line, never lose more than that one stroke: switch Rask penn off on this device
+// (plain Excalidraw from the next stroke) and leave the wet ink on screen so the owner sees what to redraw.
+function giveUp(view) {
+  setOn(false);
+  const { Notice } = require('obsidian');
+  new Notice('Rask penn klarte ikke å lagre streken og er slått av. Tegn den siste streken på nytt.', 10000);
+  setTimeout(() => view.raskPenn?.(), 4000);
+}
+
+// Give Excalidraw the finished line as one normal freedraw element. Returns true only if it is really in the drawing.
 async function handOver(view, stroke) {
   const ea = window.ExcalidrawAutomate.getAPI(view);
   const st = stroke.st;
@@ -1202,8 +1213,10 @@ async function handOver(view, stroke) {
     && Math.min(...xs) >= f.x && Math.max(...xs) <= f.x + f.width
     && Math.min(...ys) >= f.y && Math.max(...ys) <= f.y + f.height).pop();
   if (frame) el.frameId = frame.id;
-  await ea.addElementsToView(false, false, true);
+  // Last argument: let Excalidraw "restore" the element, which fills in anything a freedraw line needs.
+  await ea.addElementsToView(false, false, true, true);
   ea.destroy?.();
+  return view.excalidrawAPI.getSceneElements().some((e) => e.id === id && e.type === 'freedraw' && !e.isDeleted);
 }
 
 module.exports = function setup(plugin) {
