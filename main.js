@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.7.1';
+const VERSION = '1.8.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -994,8 +994,9 @@ const RASK_PENN = (function () {
 // - Pencil with Excalidraw's pen tool: the line is drawn only on our own see-through canvas, so Excalidraw is not
 //   repainted for every point. When the pen lifts, Excalidraw gets the finished line once, as a normal freedraw
 //   element (undo, frames, saving and Sync keep working).
-// - Fingers are left to Excalidraw's own pen mode (one finger moves the page; setting "penModeSingleFingerPanning").
-//   We only switch pen mode on and open drawings with the pen tool ready.
+// - Fingers on the drawing: one finger moves the page, two fingers move and zoom. Fingers never draw, and the palm
+//   is ignored while writing. (Excalidraw's own pen-mode panning never woke up, because it never sees our Pencil.)
+// - Drawings open with the pen tool ready.
 // The command "Rask penn i Excalidraw (på/av)" turns it off on this device (plain Excalidraw back).
 // Bundled into the Skole-knapper plugin by bygg-knapper.js; the plugin calls setup(plugin).
 
@@ -1058,6 +1059,8 @@ function attach(view) {
   setTimeout(() => readyPen(view), 500);
 
   let stroke = null; // the pen line in progress
+  const fingers = new Map(); // pointerId → screen point, for moving and zooming
+  let pinch = null; // the zoom and the scene point under the fingers when the gesture (re)started
 
   const api = () => view.excalidrawAPI;
   const local = (e) => {
@@ -1089,8 +1092,49 @@ function attach(view) {
     ctx.lineJoin = 'round';
   };
 
+  // ---- Fingers: one moves the page, two move and zoom ----
+  const midOf = () => {
+    const pts = [...fingers.values()];
+    const mid = pts.length > 1 ? [(pts[0][0] + pts[1][0]) / 2, (pts[0][1] + pts[1][1]) / 2] : pts[0];
+    const dist = pts.length > 1 ? Math.hypot(pts[0][0] - pts[1][0], pts[0][1] - pts[1][1]) : 0;
+    return { mid, dist };
+  };
+  const startGesture = () => {
+    const st = api().getAppState();
+    const { mid, dist } = midOf();
+    pinch = { zoom: st.zoom.value, dist, sceneMid: toScene(mid, st) };
+  };
+  const fingerDown = (e) => {
+    swallow(e);
+    host.setPointerCapture?.(e.pointerId);
+    fingers.set(e.pointerId, local(e));
+    startGesture();
+  };
+  const fingerMove = (e) => {
+    swallow(e);
+    fingers.set(e.pointerId, local(e));
+    const { mid, dist } = midOf();
+    const zoom = fingers.size > 1 && pinch.dist > 0 ? Math.min(30, Math.max(0.1, pinch.zoom * dist / pinch.dist)) : pinch.zoom;
+    // Keep the scene point that was under the fingers under the fingers.
+    api().updateScene({
+      appState: { zoom: { value: zoom }, scrollX: mid[0] / zoom - pinch.sceneMid[0], scrollY: mid[1] / zoom - pinch.sceneMid[1] },
+    });
+  };
+  const fingerUp = (e) => {
+    swallow(e);
+    fingers.delete(e.pointerId);
+    if (fingers.size) startGesture();
+    else pinch = null;
+  };
+
   const down = (e) => {
-    if (!isOn() || e.pointerType !== 'pen' || stroke || !onDrawing(e)) return;
+    if (!isOn() || !onDrawing(e)) return;
+    if (e.pointerType === 'touch') {
+      if (stroke) return swallow(e); // palm while writing: ignore
+      if (penSeen() && fingers.size < 2) fingerDown(e);
+      return;
+    }
+    if (e.pointerType !== 'pen' || stroke) return;
     if (!penSeen()) {
       put(PEN_SEEN, 'ja');
       readyPen(view);
@@ -1124,6 +1168,8 @@ function attach(view) {
   };
 
   const move = (e) => {
+    if (fingers.has(e.pointerId)) return fingerMove(e);
+    if (stroke && e.pointerType === 'touch') return swallow(e);
     if (!stroke || e.pointerId !== stroke.id) return;
     swallow(e);
     // Coalesced events give every pen sample since the last frame, not just one.
@@ -1148,6 +1194,7 @@ function attach(view) {
   };
 
   const up = async (e) => {
+    if (fingers.has(e.pointerId)) return fingerUp(e);
     if (!stroke || e.pointerId !== stroke.id) return;
     swallow(e);
     const done = stroke;
@@ -1166,11 +1213,18 @@ function attach(view) {
   // Capture phase on the Excalidraw root, so we run before Excalidraw's own listeners.
   const opts = { capture: true, passive: false };
   const events = [['pointerdown', down], ['pointermove', move], ['pointerup', up], ['pointercancel', up]];
+  // iOS also sends touch and gesture events; hide them from Excalidraw while we move the page, so it doesn't zoom too.
+  const touch = (e) => {
+    if (fingers.size || stroke) e.stopImmediatePropagation();
+  };
+  const touchEvents = ['touchstart', 'touchmove', 'touchend', 'gesturestart', 'gesturechange', 'gestureend'];
   for (const [n, f] of events) host.addEventListener(n, f, opts);
+  for (const n of touchEvents) host.addEventListener(n, touch, opts);
 
   view.raskPenn = () => {
     resize.disconnect();
     for (const [n, f] of events) host.removeEventListener(n, f, opts);
+    for (const n of touchEvents) host.removeEventListener(n, touch, opts);
     inkEl.remove();
     tailEl.remove();
     delete host.raskPenn;
