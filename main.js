@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.12.0';
+const VERSION = '1.12.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
