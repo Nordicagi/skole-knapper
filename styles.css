@@ -32,6 +32,20 @@
   pointer-events: none;
   z-index: 5;
 }
+/* Læring (own learning, 06_Læring): teal title and a teal stripe at the top, so it looks different from school subjects. */
+.laering .inline-title,
+.laering h1 {
+  color: #0f6e56;
+}
+.markdown-source-view.laering,
+.markdown-preview-view.laering {
+  border-top: 6px solid #5dcaa5;
+}
+.callout[data-callout="laering"] {
+  --callout-color: 29, 158, 117;
+  --callout-icon: lucide-languages;
+}
+
 /* Buttons floating inside drawings (bottom right), big enough for a finger. Oppgave is the main one. */
 .view-content:has(> .skole-flyt) {
   position: relative;

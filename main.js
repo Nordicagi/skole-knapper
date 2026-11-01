@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.10.0';
+const VERSION = '1.11.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -40,17 +40,63 @@ function subjectOfPath(path) {
   return SUBJECTS.find((s) => path === s.folder || path.startsWith(s.folder + '/'));
 }
 
+// Own learning (languages and the like): one folder per topic in 06_Læring, lessons are boards (.canvas).
+const LEARNING = '06_Læring';
+function learningTopics(app) {
+  const root = app.vault.getAbstractFileByPath(LEARNING);
+  return (root?.children || []).filter((c) => c.children).map((c) => ({ label: c.name, folder: c.path, kind: 'læring' }));
+}
+
+// Subjects you picked most recently come first in the list (remembered per device).
+const RECENT = 'skole-fag-sist';
+function recent() {
+  try { return JSON.parse(localStorage.getItem(RECENT) || '[]'); } catch (e) { return []; }
+}
+function remember(label) {
+  try { localStorage.setItem(RECENT, JSON.stringify([label, ...recent().filter((l) => l !== label)].slice(0, 20))); } catch (e) {}
+}
+
+// Make a new learning topic: its folder and main note from the "Læring" template.
+async function newLearningTopic(app, quickAddApi) {
+  const name = (await quickAddApi.inputPrompt('Hva vil du lære?', 'f.eks. Kinesisk'))?.trim();
+  if (!name) return null;
+  const folder = `${LEARNING}/${name}`;
+  if (!app.vault.getAbstractFileByPath(LEARNING)) await app.vault.createFolder(LEARNING);
+  if (!app.vault.getAbstractFileByPath(folder)) await app.vault.createFolder(folder);
+  const main = `${folder}/${name}.md`;
+  if (!app.vault.getAbstractFileByPath(main)) {
+    const tpl = app.vault.getAbstractFileByPath('99_Maler_og_Ressurser/Maler/Læring.md');
+    const body = tpl ? await app.vault.read(tpl) : `---\ntype: læring\ncssclasses: [laering]\n---\n# {{title}}\n`;
+    await app.vault.create(main, body
+      .replace(/\{\{date\}\}/g, window.moment().format('YYYY-MM-DD'))
+      .replace(/\{\{title\}\}/g, name)
+      .replace(/\{\{folder\}\}/g, folder));
+  }
+  return { label: name, folder, kind: 'læring' };
+}
+
 // The subject of the note or notebook you're in; asks with a tap list if it can't tell.
 async function subjectHere(app, quickAddApi) {
   const file = app.workspace.getActiveFile();
+  const topics = learningTopics(app);
   if (file) {
-    const bySubjectFolder = subjectOfPath(file.path);
+    const bySubjectFolder = subjectOfPath(file.path) || topics.find((t) => file.path.startsWith(t.folder + '/'));
     if (bySubjectFolder) return bySubjectFolder;
     const fag = String(app.metadataCache.getFileCache(file)?.frontmatter?.fag || '');
     const byFag = SUBJECTS.find((s) => fag.includes(s.label) || fag.includes(s.folder.split('/').pop().replace(/^[\d.]+_/, '')));
     if (byFag) return byFag;
   }
-  return quickAddApi.suggester(SUBJECTS.map((s) => s.label), SUBJECTS);
+  // Recently used first, then the rest in the usual order; new learning topic last.
+  const all = [...SUBJECTS, ...topics];
+  const order = recent();
+  const rank = (s) => (order.includes(s.label) ? order.indexOf(s.label) : 100 + all.indexOf(s));
+  const sorted = [...all].sort((a, b) => rank(a) - rank(b));
+  const options = [...sorted, { label: '＋ Nytt læringsområde …', create: true }];
+  const pick = await quickAddApi.suggester(options.map((s) => (s.kind === 'læring' ? '📘 ' : '') + s.label), options);
+  if (!pick) return null;
+  const subject = pick.create ? await newLearningTopic(app, quickAddApi) : pick;
+  if (subject) remember(subject.label);
+  return subject;
 }
 
 function notebookPath(subject) {
@@ -479,10 +525,24 @@ function fill(text, title) {
     .replace(/\{\{title\}\}/gi, title);
 }
 
+// Own learning (06_Læring/<topic>): the lesson is a board "<Topic> – YYYY-MM-DD.canvas" from the "Time – Læring" board.
+async function learningLesson(app, subject) {
+  const title = `${subject.label} – ${window.moment().format('YYYY-MM-DD')}`;
+  const path = `${subject.folder}/${title}.canvas`;
+  let file = app.vault.getAbstractFileByPath(path);
+  if (!file) {
+    const tpl = app.vault.getAbstractFileByPath(`${TEMPLATES}/Time – Læring.canvas`);
+    const body = tpl ? await app.vault.read(tpl) : '{"nodes":[],"edges":[]}';
+    file = await app.vault.create(path, fill(body, title));
+  }
+  await app.workspace.getLeaf(false).openFile(file);
+}
+
 module.exports = async ({ app, quickAddApi, obsidian }) => {
   const nb = await shared(app);
   const subject = await nb.subjectHere(app, quickAddApi);
   if (!subject) return;
+  if (subject.kind === 'læring') return learningLesson(app, subject);
 
   // Chapters: the book's, then any others used before in this subject (newest kept as written).
   const used = [];
