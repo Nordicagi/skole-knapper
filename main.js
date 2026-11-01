@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.11.0';
+const VERSION = '1.12.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -233,14 +233,29 @@ function frames(leaf) {
   return api.getViewElements().filter((e) => e.type === 'frame' && !e.isDeleted);
 }
 
+// Notebook look (test): pages are white paper on a soft grey canvas; you can still write outside them.
+const CANVAS_GREY = '#eceae4';
+
 // Add a named frame under everything already in the drawing; returns its id.
-async function addFrame(leaf, name, size) {
+// With paper: true, a locked white sheet lies inside the frame, so the page looks like paper.
+async function addFrame(leaf, name, size, paper = false) {
   const api = ea();
   api.reset();
   api.setView(leaf.view);
   const all = api.getViewElements().filter((e) => !e.isDeleted);
   const top = all.length ? Math.max(...all.map((e) => e.y + (e.height || 0))) + 80 : 0;
   const id = api.addFrame(0, top, size.w, size.h, name);
+  if (paper) {
+    api.style.strokeColor = '#d6d3cc';
+    api.style.backgroundColor = '#ffffff';
+    api.style.fillStyle = 'solid';
+    api.style.strokeWidth = 1;
+    api.style.roughness = 0;
+    const sheet = api.getElement(api.addRect(0, top, size.w, size.h));
+    sheet.locked = true;
+    sheet.frameId = id;
+    leaf.view.excalidrawAPI?.updateScene({ appState: { viewBackgroundColor: CANVAS_GREY } });
+  }
   await api.addElementsToView(false, true, false);
   zoomTo(leaf, id);
   return id;
@@ -648,7 +663,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
       leaf = await nb.openDrawingBeside(app, file);
     }
     const n = nb.frames(leaf).filter((f) => /^Side \d+/.test(f.name || '')).length + 1;
-    await nb.addFrame(leaf, `Side ${n} · ${now.format('DD.MM')}`, nb.PAGE);
+    await nb.addFrame(leaf, `Side ${n} · ${now.format('DD.MM')}`, nb.PAGE, true);
     return;
   }
 
@@ -1716,6 +1731,46 @@ module.exports = class SkoleKnapper extends Plugin {
         this.run(b.name);
       });
     }
+    this.pageBar(view, bar);
     this.register(() => bar.remove());
+  }
+
+  // "◀ Side 2/3 ▶": the "Side N" page frames in this drawing, top to bottom. Hidden when there are none.
+  pageBar(view, bar) {
+    const row = bar.createDiv({ cls: 'skole-sidelinje' });
+    const prev = row.createEl('button', { cls: 'skole-flyt-knapp', text: '◀' });
+    const label = row.createSpan({ cls: 'skole-sidelinje-tekst' });
+    const next = row.createEl('button', { cls: 'skole-flyt-knapp', text: '▶' });
+    const pages = () => (view.excalidrawAPI?.getSceneElements() || [])
+      .filter((e) => e.type === 'frame' && !e.isDeleted && /^Side \d+/.test(e.name || ''))
+      .sort((a, b) => a.y - b.y);
+    // The page whose middle is closest to the middle of the screen.
+    const current = (list) => {
+      const st = view.excalidrawAPI.getAppState();
+      const cx = st.width / 2 / st.zoom.value - st.scrollX;
+      const cy = st.height / 2 / st.zoom.value - st.scrollY;
+      let best = 0;
+      list.forEach((p, i) => {
+        const d = Math.hypot(p.x + p.width / 2 - cx, p.y + p.height / 2 - cy);
+        const b = list[best];
+        if (d < Math.hypot(b.x + b.width / 2 - cx, b.y + b.height / 2 - cy)) best = i;
+      });
+      return best;
+    };
+    const go = (step) => {
+      const list = pages();
+      if (!list.length) return;
+      const i = Math.min(list.length - 1, Math.max(0, current(list) + step));
+      view.excalidrawAPI.scrollToContent(list[i], { fitToContent: true, animate: true });
+    };
+    prev.addEventListener('click', () => go(-1));
+    next.addEventListener('click', () => go(1));
+    const update = () => {
+      const list = view.excalidrawAPI ? pages() : [];
+      row.toggleClass('skole-skjult', !list.length);
+      if (list.length) label.setText('Side ' + (current(list) + 1) + ' / ' + list.length);
+    };
+    update();
+    this.registerInterval(window.setInterval(update, 1000));
   }
 };

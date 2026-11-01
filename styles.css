@@ -82,6 +82,30 @@
 .skole-flyt-ikon {
   display: inline-flex;
 }
+/* Page bar "◀ Side 2 / 3 ▶" under the buttons. */
+.skole-sidelinje {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+.skole-sidelinje .skole-flyt-knapp {
+  width: 40px;
+  padding: 0;
+  justify-content: center;
+}
+.skole-sidelinje-tekst {
+  padding: 0 10px;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  background: var(--background-primary);
+  font-size: var(--font-ui-small);
+  color: var(--text-muted);
+}
+.skole-skjult {
+  display: none !important;
+}
 .skole-flyt-ikon svg {
   width: 18px;
   height: 18px;
