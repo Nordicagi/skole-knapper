@@ -452,7 +452,7 @@ const TANKER = '06_Tanker_og_Ideer/Tanker.md';
 const PLACES = {
   ide: '06_Tanker_og_Ideer/Ideer',
   ai: '06_Tanker_og_Ideer/AI-chatter',
-  prosjekt: '90_Prosjekter_og_Oppgaver',
+  prosjekt: '90_Prosjekter_og_Oppgaver/Prosjekter',
 };
 
 async function shared() { return FELLES; }
