@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.13.5';
+const VERSION = '1.14.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -2703,8 +2703,17 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
 
   const cursor = editor?.getCursor();
   let pageLink, where;
+  let funnet = 'ja';
+  const today = window.moment().format('YYYY-MM-DD');
 
-  if (tool === 'Excalidraw') {
+  if (!inNotebook && !inDrawing && tool === 'FineNotes') {
+    // From a note: don't touch the notebook. The oppgave's record finds its page later, either when you press
+    // Oppgave inside the notebook where you write it, or when "Finn oppgavene" sees the number in your writing.
+    const notebook = await nb.ensureNotebook(app, subject);
+    pageLink = notebook ? notebook.path.replace(/\.md$/, '') : '';
+    funnet = 'nei';
+    where = 'venter på siden';
+  } else if (tool === 'Excalidraw') {
     // Excalidraw: a frame named after the oppgave, under the last one in this week's drawing.
     let dLeaf = leaf;
     if (!inDrawing) {
@@ -2740,36 +2749,49 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
   }
 
   // The lesson: the note you're in, or today's lesson note for the subject.
-  const today = window.moment().format('YYYY-MM-DD');
-  const lesson = inNotebook || inDrawing ? app.vault.getAbstractFileByPath(`${subject.folder}/${subject.label} ${today}.md`) : here;
+  const lessonFile = inNotebook || inDrawing ? app.vault.getAbstractFileByPath(`${subject.folder}/${subject.label} ${today}.md`) : here;
 
+  // One record per oppgave ("Machine/Sider/Fysikk Oppg 3.4.1"). If it already exists (made from the note), this
+  // updates where it is instead of making a second one; the note shows the record, so it follows along.
   if (!app.vault.getAbstractFileByPath(RECORDS)) await app.vault.createFolder(RECORDS);
-  const base = `${RECORDS}/${subject.label} ${title}`.replace(/[\\:*?"<>|#^[\]]/g, '-');
-  let recordPath = `${base}.md`;
-  for (let i = 2; app.vault.getAbstractFileByPath(recordPath); i++) recordPath = `${base} (${i}).md`;
-  await app.vault.create(recordPath, [
-    '---',
-    'type: side',
-    `fag: ${subject.label}`,
-    `oppgave: "${num || title}"`,
-    `kapittel: ${chapter || ''}`,
-    ...(book ? [`sett: "${set.navn}"`, `bokside: ${book.side || ''}`] : []),
-    `uke: ${window.moment().isoWeek()}`,
-    `dato: ${today}`,
-    `side: "[[${pageLink}]]"`,
-    `time: ${lesson ? `"[[${lesson.basename}]]"` : ''}`,
-    '---',
-    `![[${pageLink}]]`,
-    '',
-  ].join('\n'));
+  const recordPath = `${RECORDS}/${subject.label} ${title}`.replace(/[\\:*?"<>|#^[\]]/g, '-') + '.md';
+  const existing = app.vault.getAbstractFileByPath(recordPath);
+  const body = funnet === 'ja'
+    ? `![[${pageLink}]]\n`
+    : `*Ikke funnet ennå.* Skriv «${num || title}» i [[${pageLink}|notatboka]], eller trykk **Oppgave** der du skriver den.\n`;
+  if (existing) {
+    if (funnet === 'ja') {
+      await app.fileManager.processFrontMatter(existing, (fm) => { fm.side = `[[${pageLink}]]`; fm.funnet = 'ja'; });
+      const text = await app.vault.read(existing);
+      await app.vault.modify(existing, text.replace(/^(---[\s\S]*?---\n)[\s\S]*$/, `$1${body}`));
+    }
+  } else {
+    await app.vault.create(recordPath, [
+      '---',
+      'type: side',
+      `fag: ${subject.label}`,
+      `oppgave: "${num || title}"`,
+      `kapittel: ${chapter || ''}`,
+      ...(book ? [`sett: "${set.navn}"`, `bokside: ${book.side || ''}`] : []),
+      `uke: ${window.moment().isoWeek()}`,
+      `dato: ${today}`,
+      `side: "[[${pageLink}]]"`,
+      `funnet: ${funnet}`,
+      `time: ${lessonFile ? `"[[${lessonFile.basename}]]"` : ''}`,
+      '---',
+      body,
+    ].join('\n'));
+  }
 
   if (inNotebook || inDrawing) {
     new obsidian.Notice(`${title} lagret ${where}.`);
   } else {
     editor.setCursor(cursor);
     // The Machine's lines are folded, so the note shows your own writing (rule in Machine/AGENTS.md).
+    // The drawing box shows the oppgave's record, which points to wherever the oppgave really is written.
+    const recordName = recordPath.split('/').pop().replace(/\.md$/, '');
     const les = book && book.lenke ? `> [!info]- Fra boka · s. ${book.side}\n> Les: [s. ${book.side}](${book.lenke})\n\n` : '';
-    editor.replaceSelection(`\n### ${title}\n${les}> [!example]- Tegning\n> ![[${pageLink}]]\n\n`);
+    editor.replaceSelection(`\n### ${title}\n${les}> [!example]- Tegning\n> ![[${recordName}]]\n\n`);
   }
 };
 
@@ -2932,6 +2954,58 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
   const target = pick.file ? pick.file.basename : word;
   const link = target.toLowerCase() === q ? `[[${target}]]` : `[[${target}|${word}]]`;
   editor.replaceRange(link, from, to);
+};
+
+  return module.exports;
+})(),
+  'finn.js': (function () {
+  const module = { exports: {} };
+// "Finn oppgavene": finds where each oppgave is written in the notebooks and points its record there.
+// Looks at every record in Machine/Sider with "funnet: nei", reads the notebook's handwriting/text-box text
+// (FineNotes keeps it in the .notebook.md file, one "### Page N" block per page), and when the oppgave number
+// is on a page ("3.4.1", "3,4,1", "R3.1" …), moves the record to that page. Runs by itself when the plugin starts.
+
+const RECORDS = 'Machine/Sider';
+
+// "3.4.1" -> a pattern that also takes "3,4,1", "3. 4. 1" and an "Oppg" in front; R3.1 also as "R 3.1".
+function pattern(num) {
+  const [, letter, digits] = String(num).match(/^([A-Z]?)\s*([\d.]+)$/i) || [];
+  if (!digits || !digits.includes('.')) return null; // plain "1b" etc. is too common to spot safely
+  const body = digits.split('.').map((d) => d).join('\\s*[.,]\\s*');
+  return new RegExp(`(?<![\\d.,])${letter ? letter + '\\s*' : ''}${body}(?![\\d])`, 'i');
+}
+
+// The text of each page: { 2: "…", 3: "…" }.
+function pagesOf(text) {
+  const pages = {};
+  for (const m of text.matchAll(/### Page (\d+)\s*\n<!--goodobsidian-page[^>]*-->\s*\n([\s\S]*?)(?=\n### Page |\n<!--\/goodobsidian-text-->|$)/g)) {
+    pages[m[1]] = (pages[m[1]] || '') + '\n' + m[2];
+  }
+  return pages;
+}
+
+module.exports = async ({ app, obsidian, quiet }) => {
+  let moved = 0;
+  const cache = new Map();
+  for (const f of app.vault.getMarkdownFiles()) {
+    if (!f.path.startsWith(RECORDS + '/')) continue;
+    const fm = app.metadataCache.getFileCache(f)?.frontmatter;
+    if (!fm || fm.funnet !== 'nei' || !fm.oppgave) continue;
+    const re = pattern(fm.oppgave);
+    const link = String(fm.side || '').replace(/^\[\[|\]\]$/g, '').split('#')[0];
+    const notebook = re && app.metadataCache.getFirstLinkpathDest(link, f.path);
+    if (!notebook || !notebook.path.endsWith('.notebook.md')) continue;
+    if (!cache.has(notebook.path)) cache.set(notebook.path, pagesOf(await app.vault.cachedRead(notebook)));
+    const pages = cache.get(notebook.path);
+    const page = Object.keys(pages).map(Number).sort((a, b) => a - b).find((p) => re.test(pages[p]));
+    if (!page) continue;
+    const pageLink = `${notebook.path.replace(/\.md$/, '')}#page=${page}`;
+    await app.fileManager.processFrontMatter(f, (x) => { x.side = `[[${pageLink}]]`; x.funnet = 'ja'; });
+    const text = await app.vault.read(f);
+    await app.vault.modify(f, text.replace(/^(---[\s\S]*?---\n)[\s\S]*$/, `$1![[${pageLink}]]\n`));
+    moved++;
+  }
+  if (!quiet || moved) new obsidian.Notice(moved ? `Fant ${moved} oppgave(r) i notatbøkene.` : 'Ingen nye oppgaver funnet i notatbøkene.');
 };
 
   return module.exports;
@@ -3508,6 +3582,14 @@ const BUTTONS = [
     "file": "lenk.js",
     "where": [],
     "input": {}
+  },
+  {
+    "name": "finn-oppgaver",
+    "icon": "search",
+    "label": "Finn oppgavene",
+    "file": "finn.js",
+    "where": [],
+    "input": {}
   }
 ];
 const VIEWS = { markdown: 'note', 'goodobsidian-view': 'notebook', excalidraw: 'notebook' };
@@ -3539,7 +3621,13 @@ module.exports = class SkoleKnapper extends Plugin {
     this.app.workspace.onLayoutReady(() => {
       this.decorate();
       if (Platform.isPhone) this.phoneSetup();
+      // Point oppgaver at the page where they're written, quietly, once Sync has had a moment.
+      window.setTimeout(() => SCRIPTS['finn.js']({ app: this.app, obsidian, quiet: true }).catch((e) => console.warn('Finn oppgavene', e)), 8000);
     });
+    // And again each time a notebook is opened (you've likely written something since).
+    this.registerEvent(this.app.workspace.on('file-open', (file) => {
+      if (file && file.path.endsWith('.notebook.md')) SCRIPTS['finn.js']({ app: this.app, obsidian, quiet: true }).catch(() => {});
+    }));
     this.registerEvent(this.app.workspace.on('layout-change', () => this.decorate()));
     this.registerEvent(this.app.workspace.on('active-leaf-change', () => this.decorate()));
     // A drawing made outside Obsidian (by the Machine) can arrive on a device before Excalidraw knows it,
