@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.13.4';
+const VERSION = '1.13.5';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -186,7 +186,7 @@ const TASK = { w: 800, h: 520 };    // oppgave frame; drag it bigger or smaller 
 
 // The drawing tool chosen in the Oppgave menu, remembered per device.
 function tool() {
-  try { return localStorage.getItem('oppgave-tool') || 'FineNotes'; } catch (e) { return 'FineNotes'; }
+  try { return localStorage.getItem('oppgave-verktoy') || 'FineNotes'; } catch (e) { return 'FineNotes'; }
 }
 
 function ea() {
@@ -2434,7 +2434,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
   ].sort((a, b) => (a.tool === last ? -1 : b.tool === last ? 1 : 0));
   const chosen = await quickAddApi.suggester(choices.map((c) => c.label), choices);
   if (!chosen) return;
-  try { localStorage.setItem('oppgave-tool', chosen.tool); } catch (e) {}
+  try { localStorage.setItem('oppgave-verktoy', chosen.tool); } catch (e) {}
 
   if (chosen.tool === 'Excalidraw') {
     const file = await nb.ensureWeekDrawing(app, subject);
@@ -2605,7 +2605,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
 
   // The drawing tool is remembered per device; FineNotes unless changed. Not offered inside a notebook.
   let tool = 'FineNotes';
-  try { tool = localStorage.getItem('oppgave-tool') || tool; } catch (e) {}
+  try { tool = localStorage.getItem('oppgave-verktoy') || tool; } catch (e) {}
   if (inNotebook) tool = 'FineNotes';
   if (inDrawing) tool = 'Excalidraw';
 
@@ -2664,7 +2664,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     }
     if (!pick.toggle) break;
     tool = tool === 'FineNotes' ? 'Excalidraw' : 'FineNotes';
-    try { localStorage.setItem('oppgave-tool', tool); } catch (e) {}
+    try { localStorage.setItem('oppgave-verktoy', tool); } catch (e) {}
   }
 
   let num = pick.entry ? pick.entry.num : pick.num || null;
