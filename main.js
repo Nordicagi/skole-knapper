@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.13.3';
+const VERSION = '1.13.4';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -2629,7 +2629,9 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     }
     return list;
   };
-  if (lastSet && entries(lastSet).some((e) => !doneIn(lastSet).includes(e.num))) set = lastSet;
+  // Only when that set belongs to an earlier week (you're behind); this week's lesson set otherwise comes first.
+  const week = window.moment().isoWeek();
+  if (lastSet && !lastSet.uker.includes(week) && entries(lastSet).some((e) => !doneIn(lastSet).includes(e.num))) set = lastSet;
 
   let pick;
   for (;;) {
