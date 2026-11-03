@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.14.0';
+const VERSION = '1.14.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1098,202 +1098,202 @@ const OPPGAVER = {
     {
      "nr": "1.1.1",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.2",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.3",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.4",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.5",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.6",
      "side": 20,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=12"
     },
     {
      "nr": "1.1.7",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.8",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.9",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.10",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.11",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.12",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.13",
      "side": 21,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=13"
     },
     {
      "nr": "1.1.14",
      "side": 22,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=14"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=14"
     },
     {
      "nr": "1.1.15",
      "side": 22,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=14"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=14"
     },
     {
      "nr": "1.1.16",
      "side": 22,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=14"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=14"
     },
     {
      "nr": "1.1.17",
      "side": 22,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=14"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=14"
     },
     {
      "nr": "1.1.18",
      "side": 22,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=14"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=14"
     },
     {
      "nr": "1.1.19",
      "side": 23,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=15"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=15"
     },
     {
      "nr": "1.1.20",
      "side": 23,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=15"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=15"
     },
     {
      "nr": "1.2.1",
      "side": 27,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=19"
     },
     {
      "nr": "1.2.2",
      "side": 27,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=19"
     },
     {
      "nr": "1.2.3",
      "side": 27,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=19"
     },
     {
      "nr": "1.2.4",
      "side": 27,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=19"
     },
     {
      "nr": "1.2.5",
      "side": 27,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=19"
     },
     {
      "nr": "1.2.6",
      "side": 28,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=20"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=20"
     },
     {
      "nr": "2.1.1",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.2",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.3",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.4",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.5",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.6",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.7",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.8",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.9",
      "side": 42,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=10"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=10"
     },
     {
      "nr": "2.1.10",
      "side": 43,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=11"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=11"
     },
     {
      "nr": "2.1.11",
      "side": 43,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=11"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=11"
     },
     {
      "nr": "2.1.12",
      "side": 43,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=11"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=11"
     },
     {
      "nr": "2.1.13",
      "side": 43,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=11"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=11"
     },
     {
      "nr": "2.1.14",
      "side": 43,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=11"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=11"
     }
    ]
   },
@@ -1308,72 +1308,72 @@ const OPPGAVER = {
     {
      "nr": "2.2.1",
      "side": 55,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=23"
     },
     {
      "nr": "2.2.2",
      "side": 55,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=23"
     },
     {
      "nr": "2.2.3",
      "side": 55,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=23"
     },
     {
      "nr": "2.2.4",
      "side": 55,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=23"
     },
     {
      "nr": "2.2.5",
      "side": 55,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=23"
     },
     {
      "nr": "2.2.6",
      "side": 56,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=24"
     },
     {
      "nr": "2.2.7",
      "side": 56,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=24"
     },
     {
      "nr": "2.2.8",
      "side": 56,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=24"
     },
     {
      "nr": "2.2.9",
      "side": 56,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=24"
     },
     {
      "nr": "2.2.10",
      "side": 57,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=25"
     },
     {
      "nr": "2.2.11",
      "side": 57,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=25"
     },
     {
      "nr": "2.2.12",
      "side": 57,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=25"
     },
     {
      "nr": "2.2.13",
      "side": 57,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=25"
     },
     {
      "nr": "2.2.14",
      "side": 57,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=25"
     }
    ]
   },
@@ -1388,112 +1388,112 @@ const OPPGAVER = {
     {
      "nr": "3.1.1",
      "side": 71,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=7"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=7"
     },
     {
      "nr": "3.1.2",
      "side": 71,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=7"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=7"
     },
     {
      "nr": "3.1.3",
      "side": 71,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=7"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=7"
     },
     {
      "nr": "3.1.4",
      "side": 71,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=7"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=7"
     },
     {
      "nr": "3.1.5",
      "side": 71,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=7"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=7"
     },
     {
      "nr": "3.1.6",
      "side": 72,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=8"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=8"
     },
     {
      "nr": "3.1.7",
      "side": 72,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=8"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=8"
     },
     {
      "nr": "3.2.1",
      "side": 76,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=12"
     },
     {
      "nr": "3.2.2",
      "side": 76,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=12"
     },
     {
      "nr": "3.2.3",
      "side": 76,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=12"
     },
     {
      "nr": "3.2.4",
      "side": 76,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=12"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=12"
     },
     {
      "nr": "3.2.5",
      "side": 77,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=13"
     },
     {
      "nr": "3.2.6",
      "side": 77,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=13"
     },
     {
      "nr": "3.2.7",
      "side": 77,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=13"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=13"
     },
     {
      "nr": "5.1.1",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.2",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.3",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.4",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.5",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.6",
      "side": 141,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=5"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=5"
     },
     {
      "nr": "5.1.7",
      "side": 142,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=6"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=6"
     },
     {
      "nr": "5.1.8",
      "side": 142,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=6"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=6"
     }
    ]
   },
@@ -1508,97 +1508,97 @@ const OPPGAVER = {
     {
      "nr": "3.3.1",
      "side": 81,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=17"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=17"
     },
     {
      "nr": "3.3.2",
      "side": 81,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=17"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=17"
     },
     {
      "nr": "3.3.3",
      "side": 81,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=17"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=17"
     },
     {
      "nr": "3.3.4",
      "side": 82,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=18"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=18"
     },
     {
      "nr": "3.3.5",
      "side": 82,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=18"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=18"
     },
     {
      "nr": "3.3.6",
      "side": 82,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=18"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=18"
     },
     {
      "nr": "3.3.7",
      "side": 82,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=18"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=18"
     },
     {
      "nr": "3.3.8",
      "side": 82,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=18"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=18"
     },
     {
      "nr": "3.3.9",
      "side": 83,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=19"
     },
     {
      "nr": "3.3.10",
      "side": 83,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=19"
     },
     {
      "nr": "3.4.1",
      "side": 90,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=26"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=26"
     },
     {
      "nr": "3.4.2",
      "side": 90,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=26"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=26"
     },
     {
      "nr": "3.4.3",
      "side": 91,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "3.4.4",
      "side": 91,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "3.4.5",
      "side": 91,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "3.4.6",
      "side": 91,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "3.4.7",
      "side": 91,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "3.4.8",
      "side": 92,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=28"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=28"
     },
     {
      "nr": "3.4.9",
      "side": 92,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=28"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=28"
     }
    ]
   },
@@ -1614,52 +1614,52 @@ const OPPGAVER = {
     {
      "nr": "5.2.1",
      "side": 155,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=19"
     },
     {
      "nr": "5.2.2",
      "side": 155,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=19"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=19"
     },
     {
      "nr": "5.2.3",
      "side": 156,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=20"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=20"
     },
     {
      "nr": "5.2.4",
      "side": 156,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=20"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=20"
     },
     {
      "nr": "5.2.5",
      "side": 156,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=20"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=20"
     },
     {
      "nr": "5.2.6",
      "side": 157,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=21"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=21"
     },
     {
      "nr": "5.2.7",
      "side": 157,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=21"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=21"
     },
     {
      "nr": "5.2.8",
      "side": 157,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=21"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=21"
     },
     {
      "nr": "5.2.9",
      "side": 157,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=21"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=21"
     },
     {
      "nr": "5.2.10",
      "side": 158,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=22"
     }
    ]
   },
@@ -1674,67 +1674,67 @@ const OPPGAVER = {
     {
      "nr": "R1.1",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.2",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.3",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.4",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.5",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.6",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.7",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.8",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.9",
      "side": 30,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=22"
     },
     {
      "nr": "R1.10",
      "side": 31,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=23"
     },
     {
      "nr": "R1.11",
      "side": 31,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=23"
     },
     {
      "nr": "R1.12",
      "side": 31,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=23"
     },
     {
      "nr": "R1.13",
      "side": 31,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20%28Regning%20med%20fysiske%20st%C3%B8rrelser%29.pdf#page=23"
     }
    ]
   },
@@ -1750,117 +1750,117 @@ const OPPGAVER = {
     {
      "nr": "R2.1",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.2",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.3",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.4",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.5",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.6",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.7",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.8",
      "side": 60,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=28"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=28"
     },
     {
      "nr": "R2.9",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.10",
      "side": 60,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=28"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=28"
     },
     {
      "nr": "R2.11",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.12",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.13",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.14",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.15",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.16",
      "side": 61,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=29"
     },
     {
      "nr": "R2.17",
      "side": 59,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=27"
     },
     {
      "nr": "R2.18",
      "side": 62,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=30"
     },
     {
      "nr": "R2.19",
      "side": 62,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=30"
     },
     {
      "nr": "R2.20",
      "side": 62,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=30"
     },
     {
      "nr": "R2.21",
      "side": 63,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=31"
     },
     {
      "nr": "R2.22",
      "side": 63,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=31"
     },
     {
      "nr": "R2.23",
      "side": 63,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20%28Rettlinjet%20bevegelse%29.pdf#page=31"
     }
    ]
   },
@@ -1876,102 +1876,102 @@ const OPPGAVER = {
     {
      "nr": "R3.1",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.2",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.3",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.4",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.5",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.6",
      "side": 100,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=36"
     },
     {
      "nr": "R3.7",
      "side": 100,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=36"
     },
     {
      "nr": "R3.8",
      "side": 100,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=36"
     },
     {
      "nr": "R3.9",
      "side": 99,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=35"
     },
     {
      "nr": "R3.10",
      "side": 101,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=37"
     },
     {
      "nr": "R3.11",
      "side": 101,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=37"
     },
     {
      "nr": "R3.12",
      "side": 101,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=37"
     },
     {
      "nr": "R3.13",
      "side": 101,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=37"
     },
     {
      "nr": "R3.14",
      "side": 101,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=37"
     },
     {
      "nr": "R3.15",
      "side": 102,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=38"
     },
     {
      "nr": "R3.16",
      "side": 102,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=38"
     },
     {
      "nr": "R3.17",
      "side": 102,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=38"
     },
     {
      "nr": "R3.18",
      "side": 102,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=38"
     },
     {
      "nr": "R3.19",
      "side": 102,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=38"
     },
     {
      "nr": "R3.20",
      "side": 103,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=39"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20%28Kraft%20og%20bevegelse%29.pdf#page=39"
     }
    ]
   },
@@ -1988,82 +1988,82 @@ const OPPGAVER = {
     {
      "nr": "R5.1",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.2",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.3",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.4",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.5",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.6",
      "side": 160,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=24"
     },
     {
      "nr": "R5.7",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.8",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.9",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.10",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.11",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.12",
      "side": 162,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=26"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=26"
     },
     {
      "nr": "R5.13",
      "side": 162,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=26"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=26"
     },
     {
      "nr": "R5.14",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.15",
      "side": 161,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=25"
     },
     {
      "nr": "R5.16",
      "side": 163,
-     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=27"
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20%28Statikk%29.pdf#page=27"
     }
    ]
   },
