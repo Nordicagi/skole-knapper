@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.12.3';
+const VERSION = '1.13.0';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -443,6 +443,1244 @@ const KAPITLER = {
   ]
 };
 
+// The books' real oppgave sets (Machine/System/oppgaver.json), built in for the Oppgave button.
+const OPPGAVER = {
+ "laget": "2026-11-03",
+ "sett": [
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 01 (1.1, 1.3, 1.6)",
+   "kapittel": "1",
+   "uker": [
+    34
+   ],
+   "oppgaver": [
+    {
+     "nr": "1.1.1",
+     "side": 18,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=14"
+    },
+    {
+     "nr": "1.1.2",
+     "side": 18,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=14"
+    },
+    {
+     "nr": "1.1.3",
+     "side": 19,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=15"
+    },
+    {
+     "nr": "1.1.4",
+     "side": 19,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=15"
+    },
+    {
+     "nr": "1.1.5",
+     "side": 20,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=16"
+    },
+    {
+     "nr": "1.1.6",
+     "side": 20,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=16"
+    },
+    {
+     "nr": "1.1.7",
+     "side": 20,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=16"
+    },
+    {
+     "nr": "1.1.8",
+     "side": 20,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=16"
+    },
+    {
+     "nr": "1.1.9",
+     "side": 21,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=17"
+    },
+    {
+     "nr": "1.1.10",
+     "side": 21,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=17"
+    },
+    {
+     "nr": "1.3.1",
+     "side": 29,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=25"
+    },
+    {
+     "nr": "1.3.2",
+     "side": 29,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=25"
+    },
+    {
+     "nr": "1.3.3",
+     "side": 29,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=25"
+    },
+    {
+     "nr": "1.3.4",
+     "side": 31,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=27"
+    },
+    {
+     "nr": "1.3.5",
+     "side": 31,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=27"
+    },
+    {
+     "nr": "1.3.6",
+     "side": 32,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=28"
+    },
+    {
+     "nr": "1.3.7",
+     "side": 32,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=28"
+    },
+    {
+     "nr": "1.3.8",
+     "side": 32,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=28"
+    },
+    {
+     "nr": "1.3.9",
+     "side": 32,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=28"
+    },
+    {
+     "nr": "1.3.10",
+     "side": null,
+     "lenke": null
+    },
+    {
+     "nr": "1.6.3",
+     "side": 51,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=47"
+    },
+    {
+     "nr": "1.6.4",
+     "side": 51,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=47"
+    },
+    {
+     "nr": "1.6.7",
+     "side": 54,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=50"
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 02 (1.4)",
+   "kapittel": "1",
+   "uker": [
+    35
+   ],
+   "oppgaver": [
+    {
+     "nr": "1.4.1",
+     "side": 34,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=30"
+    },
+    {
+     "nr": "1.4.2",
+     "side": 34,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=30"
+    },
+    {
+     "nr": "1.4.3",
+     "side": 35,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=31"
+    },
+    {
+     "nr": "1.4.4",
+     "side": 35,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=31"
+    },
+    {
+     "nr": "1.4.5",
+     "side": 36,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=32"
+    },
+    {
+     "nr": "1.4.6",
+     "side": 36,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=32"
+    },
+    {
+     "nr": "1.4.7",
+     "side": 37,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=33"
+    },
+    {
+     "nr": "1.4.8",
+     "side": 37,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=33"
+    },
+    {
+     "nr": "1.4.9",
+     "side": 39,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=35"
+    },
+    {
+     "nr": "1.4.10",
+     "side": 39,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=35"
+    },
+    {
+     "nr": "1.4.11",
+     "side": 40,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=36"
+    },
+    {
+     "nr": "1.4.12",
+     "side": 40,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=36"
+    },
+    {
+     "nr": "1.4.13",
+     "side": 40,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=36"
+    },
+    {
+     "nr": "1.4.14",
+     "side": 40,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=36"
+    },
+    {
+     "nr": "1.4.15",
+     "side": 41,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=37"
+    },
+    {
+     "nr": "1.4.16",
+     "side": 41,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=37"
+    },
+    {
+     "nr": "1.4.17",
+     "side": 42,
+     "lenke": "zotero://open-pdf/library/items/HE3JUHV8?page=38"
+    },
+    {
+     "nr": "1.4.18",
+     "side": null,
+     "lenke": null
+    },
+    {
+     "nr": "1.4.19",
+     "side": null,
+     "lenke": null
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 03 (2.1, 2.2)",
+   "kapittel": "2",
+   "uker": [
+    36
+   ],
+   "oppgaver": [
+    {
+     "nr": "2.1.1",
+     "side": 80,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=5"
+    },
+    {
+     "nr": "2.1.2",
+     "side": 80,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=5"
+    },
+    {
+     "nr": "2.1.4",
+     "side": 80,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=5"
+    },
+    {
+     "nr": "2.1.5",
+     "side": 80,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=5"
+    },
+    {
+     "nr": "2.1.6",
+     "side": 80,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=5"
+    },
+    {
+     "nr": "2.1.8",
+     "side": 81,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=6"
+    },
+    {
+     "nr": "2.1.9",
+     "side": 81,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=6"
+    },
+    {
+     "nr": "2.1.13",
+     "side": 83,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=8"
+    },
+    {
+     "nr": "2.1.15",
+     "side": 83,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=8"
+    },
+    {
+     "nr": "2.1.18",
+     "side": 86,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=11"
+    },
+    {
+     "nr": "2.2.1",
+     "side": 86,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=11"
+    },
+    {
+     "nr": "2.2.2",
+     "side": 87,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=12"
+    },
+    {
+     "nr": "2.2.5",
+     "side": 87,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=12"
+    },
+    {
+     "nr": "2.2.7",
+     "side": 87,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=12"
+    },
+    {
+     "nr": "2.2.8",
+     "side": 88,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=13"
+    },
+    {
+     "nr": "2.2.13",
+     "side": 89,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=14"
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 04 (2.3, 2.5, 5.3)",
+   "kapittel": "2",
+   "uker": [
+    37
+   ],
+   "oppgaver": [
+    {
+     "nr": "2.3.3",
+     "side": 97,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=22"
+    },
+    {
+     "nr": "2.3.4",
+     "side": 97,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=22"
+    },
+    {
+     "nr": "2.3.5",
+     "side": 97,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=22"
+    },
+    {
+     "nr": "2.3.6",
+     "side": 97,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=22"
+    },
+    {
+     "nr": "2.3.7",
+     "side": 97,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=22"
+    },
+    {
+     "nr": "2.3.8",
+     "side": 98,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=23"
+    },
+    {
+     "nr": "2.3.9",
+     "side": 98,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=23"
+    },
+    {
+     "nr": "2.3.12",
+     "side": 100,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=25"
+    },
+    {
+     "nr": "2.3.13",
+     "side": 102,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=27"
+    },
+    {
+     "nr": "2.3.14",
+     "side": null,
+     "lenke": null
+    },
+    {
+     "nr": "2.5.1",
+     "side": 107,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=32"
+    },
+    {
+     "nr": "2.5.2",
+     "side": 107,
+     "lenke": "zotero://open-pdf/library/items/SHJJ693P?page=32"
+    },
+    {
+     "nr": "5.3.1",
+     "side": 223,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=17"
+    },
+    {
+     "nr": "5.3.2",
+     "side": 223,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=17"
+    },
+    {
+     "nr": "5.3.3",
+     "side": 224,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=18"
+    },
+    {
+     "nr": "5.3.4",
+     "side": 226,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=20"
+    },
+    {
+     "nr": "5.3.5",
+     "side": 226,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=20"
+    },
+    {
+     "nr": "5.3.9",
+     "side": 227,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=21"
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 05 (3.1, 3.2, 3.3, 3.4)",
+   "kapittel": "3",
+   "uker": [
+    38
+   ],
+   "oppgaver": [
+    {
+     "nr": "3.1.5",
+     "side": 132,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=6"
+    },
+    {
+     "nr": "3.1.6",
+     "side": 132,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=6"
+    },
+    {
+     "nr": "3.1.7",
+     "side": 132,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=6"
+    },
+    {
+     "nr": "3.1.9",
+     "side": 132,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=6"
+    },
+    {
+     "nr": "3.2.1",
+     "side": 134,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=8"
+    },
+    {
+     "nr": "3.2.3",
+     "side": 134,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=8"
+    },
+    {
+     "nr": "3.2.5",
+     "side": 136,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=10"
+    },
+    {
+     "nr": "3.2.7",
+     "side": 137,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=11"
+    },
+    {
+     "nr": "3.2.11",
+     "side": 137,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=11"
+    },
+    {
+     "nr": "3.2.12",
+     "side": 137,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=11"
+    },
+    {
+     "nr": "3.2.14",
+     "side": 139,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=13"
+    },
+    {
+     "nr": "3.2.15",
+     "side": 139,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=13"
+    },
+    {
+     "nr": "3.3.7",
+     "side": 144,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=18"
+    },
+    {
+     "nr": "3.4.5",
+     "side": 146,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=20"
+    },
+    {
+     "nr": "3.4.9",
+     "side": 147,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=21"
+    },
+    {
+     "nr": "3.4.10",
+     "side": 148,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=22"
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 06 (3.5, 5.6)",
+   "kapittel": "3",
+   "uker": [
+    39
+   ],
+   "oppgaver": [
+    {
+     "nr": "3.5.1",
+     "side": 153,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=27"
+    },
+    {
+     "nr": "3.5.2",
+     "side": 153,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=27"
+    },
+    {
+     "nr": "3.5.4",
+     "side": 154,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=28"
+    },
+    {
+     "nr": "3.5.6",
+     "side": 154,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=28"
+    },
+    {
+     "nr": "3.5.8",
+     "side": 154,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=28"
+    },
+    {
+     "nr": "3.5.10",
+     "side": 154,
+     "lenke": "zotero://open-pdf/library/items/YCHQPSPB?page=28"
+    },
+    {
+     "nr": "5.6.1",
+     "side": 238,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=32"
+    },
+    {
+     "nr": "5.6.2",
+     "side": 239,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=33"
+    },
+    {
+     "nr": "5.6.3",
+     "side": 239,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=33"
+    },
+    {
+     "nr": "5.6.4",
+     "side": 241,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=35"
+    },
+    {
+     "nr": "5.6.6",
+     "side": 243,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=37"
+    },
+    {
+     "nr": "5.6.7",
+     "side": 243,
+     "lenke": "zotero://open-pdf/library/items/HN7N6CLM?page=37"
+    }
+   ]
+  },
+  {
+   "fag": "Matte",
+   "navn": "Leksjon 07 (4.1)",
+   "kapittel": "4",
+   "uker": [
+    41
+   ],
+   "oppgaver": [
+    {
+     "nr": "4.1.2",
+     "side": 162,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=4"
+    },
+    {
+     "nr": "4.1.11",
+     "side": 168,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=10"
+    },
+    {
+     "nr": "4.1.12",
+     "side": 168,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=10"
+    },
+    {
+     "nr": "4.1.13",
+     "side": 168,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=10"
+    },
+    {
+     "nr": "4.1.14",
+     "side": 170,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=12"
+    },
+    {
+     "nr": "4.1.15",
+     "side": 171,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=13"
+    },
+    {
+     "nr": "4.1.16",
+     "side": 171,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=13"
+    },
+    {
+     "nr": "4.1.17",
+     "side": 171,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=13"
+    },
+    {
+     "nr": "4.1.18",
+     "side": 172,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=14"
+    },
+    {
+     "nr": "4.1.19",
+     "side": 172,
+     "lenke": "zotero://open-pdf/library/items/PF8GLY6S?page=14"
+    }
+   ]
+  },
+  {
+   "fag": "Fysikk",
+   "navn": "Kap 1 Regning med fysiske størrelser · Repetisjonsoppgaver",
+   "kapittel": "1",
+   "uker": [
+    42
+   ],
+   "oppgaver": [
+    {
+     "nr": "R1.1",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.2",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.3",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.4",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.5",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.6",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.7",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.8",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.9",
+     "side": 30,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=22"
+    },
+    {
+     "nr": "R1.10",
+     "side": 31,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+    },
+    {
+     "nr": "R1.11",
+     "side": 31,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+    },
+    {
+     "nr": "R1.12",
+     "side": 31,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+    },
+    {
+     "nr": "R1.13",
+     "side": 31,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.01%20(Regning%20med%20fysiske%20st%C3%B8rrelser).pdf#page=23"
+    }
+   ]
+  },
+  {
+   "fag": "Fysikk",
+   "navn": "Kap 2 Rettlinjet bevegelse · Repetisjonsoppgaver",
+   "kapittel": "2",
+   "uker": [
+    42,
+    43
+   ],
+   "oppgaver": [
+    {
+     "nr": "R2.1",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.2",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.3",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.4",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.5",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.6",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.7",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.8",
+     "side": 60,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=28"
+    },
+    {
+     "nr": "R2.9",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.10",
+     "side": 60,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=28"
+    },
+    {
+     "nr": "R2.11",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.12",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.13",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.14",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.15",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.16",
+     "side": 61,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=29"
+    },
+    {
+     "nr": "R2.17",
+     "side": 59,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=27"
+    },
+    {
+     "nr": "R2.18",
+     "side": 62,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+    },
+    {
+     "nr": "R2.19",
+     "side": 62,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+    },
+    {
+     "nr": "R2.20",
+     "side": 62,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=30"
+    },
+    {
+     "nr": "R2.21",
+     "side": 63,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+    },
+    {
+     "nr": "R2.22",
+     "side": 63,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+    },
+    {
+     "nr": "R2.23",
+     "side": 63,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.02%20(Rettlinjet%20bevegelse).pdf#page=31"
+    }
+   ]
+  },
+  {
+   "fag": "Fysikk",
+   "navn": "Kap 3 Kraft og bevegelse · Repetisjonsoppgaver",
+   "kapittel": "3",
+   "uker": [
+    44,
+    45
+   ],
+   "oppgaver": [
+    {
+     "nr": "R3.1",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.2",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.3",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.4",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.5",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.6",
+     "side": 100,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+    },
+    {
+     "nr": "R3.7",
+     "side": 100,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+    },
+    {
+     "nr": "R3.8",
+     "side": 100,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=36"
+    },
+    {
+     "nr": "R3.9",
+     "side": 99,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=35"
+    },
+    {
+     "nr": "R3.10",
+     "side": 101,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+    },
+    {
+     "nr": "R3.11",
+     "side": 101,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+    },
+    {
+     "nr": "R3.12",
+     "side": 101,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+    },
+    {
+     "nr": "R3.13",
+     "side": 101,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+    },
+    {
+     "nr": "R3.14",
+     "side": 101,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=37"
+    },
+    {
+     "nr": "R3.15",
+     "side": 102,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+    },
+    {
+     "nr": "R3.16",
+     "side": 102,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+    },
+    {
+     "nr": "R3.17",
+     "side": 102,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+    },
+    {
+     "nr": "R3.18",
+     "side": 102,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+    },
+    {
+     "nr": "R3.19",
+     "side": 102,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=38"
+    },
+    {
+     "nr": "R3.20",
+     "side": 103,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.03%20(Kraft%20og%20bevegelse).pdf#page=39"
+    }
+   ]
+  },
+  {
+   "fag": "Fysikk",
+   "navn": "Kap 5 Statikk · Repetisjonsoppgaver",
+   "kapittel": "5",
+   "uker": [
+    44,
+    46,
+    47
+   ],
+   "oppgaver": [
+    {
+     "nr": "R5.1",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.2",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.3",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.4",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.5",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.6",
+     "side": 160,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=24"
+    },
+    {
+     "nr": "R5.7",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.8",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.9",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.10",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.11",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.12",
+     "side": 162,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=26"
+    },
+    {
+     "nr": "R5.13",
+     "side": 162,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=26"
+    },
+    {
+     "nr": "R5.14",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.15",
+     "side": 161,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=25"
+    },
+    {
+     "nr": "R5.16",
+     "side": 163,
+     "lenke": "file:///G:/My%20Drive/Skole/01_Realfaglige_Redskap/01.02_Fysikk/01.02.05%20(Statikk).pdf#page=27"
+    }
+   ]
+  },
+  {
+   "fag": "Elektro",
+   "navn": "Kap 4 Effekt og energi · Kontrolloppgaver",
+   "kapittel": "4",
+   "uker": [
+    43
+   ],
+   "oppgaver": [
+    {
+     "nr": "1",
+     "side": 56,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=10"
+    },
+    {
+     "nr": "2",
+     "side": 56,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=10"
+    },
+    {
+     "nr": "3",
+     "side": 56,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=10"
+    },
+    {
+     "nr": "4",
+     "side": 57,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=11"
+    },
+    {
+     "nr": "5",
+     "side": 57,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=11"
+    },
+    {
+     "nr": "6",
+     "side": 57,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/FJF36YC2?page=11"
+    }
+   ]
+  },
+  {
+   "fag": "Elektro",
+   "navn": "Kap 5 Spoler, magnetisme og induktans · Kontrolloppgaver",
+   "kapittel": "5",
+   "uker": [
+    44,
+    45,
+    46
+   ],
+   "oppgaver": [
+    {
+     "nr": "1",
+     "side": 81,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=23"
+    },
+    {
+     "nr": "2",
+     "side": 81,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=23"
+    },
+    {
+     "nr": "3",
+     "side": 81,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=23"
+    },
+    {
+     "nr": "4",
+     "side": 82,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=24"
+    },
+    {
+     "nr": "5",
+     "side": 82,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=24"
+    },
+    {
+     "nr": "6",
+     "side": 82,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=24"
+    },
+    {
+     "nr": "7",
+     "side": 82,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d",
+      "e"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=24"
+    },
+    {
+     "nr": "8",
+     "side": 83,
+     "deler": [
+      "a",
+      "b",
+      "c",
+      "d"
+     ],
+     "lenke": "zotero://open-pdf/library/items/LDXKP9UV?page=25"
+    }
+   ]
+  }
+ ]
+};
+
 const SCRIPTS = {
   'ny.js': (function () {
   const module = { exports: {} };
@@ -729,12 +1967,31 @@ function nextOf(num) {
   return p.join('.');
 }
 
-// "4.1.1b" -> { base: "4.1.1", letter: "b" }
+// "4.1.1b" -> { base: "4.1.1", letter: "b" }; also "R3.6" (physics) and "1 b" (Elektro).
 const split = (num) => {
-  const m = String(num).match(/^(\d+(?:\.\d+)*)\s*([a-z])?$/i);
+  const m = String(num).match(/^([A-Z]?\d+(?:\.\d+)*)\s*([a-z])?$/i);
   return m ? { base: m[1], letter: (m[2] || '').toLowerCase() } : { base: String(num), letter: '' };
 };
 const LETTERS = 'abcdefgh'.split('');
+
+// The real oppgave sets per subject (Machine/System/oppgaver.json, made from the books and the fremdriftsplaner).
+// Inside the plugin the list is built in; elsewhere it is read from the vault.
+async function bookSets(app) {
+  if (typeof OPPGAVER !== 'undefined') return OPPGAVER.sett || [];
+  try { return JSON.parse(await app.vault.adapter.read('Machine/System/oppgaver.json')).sett || []; } catch (e) { return []; }
+}
+
+// The set for this week; else the latest one before it; else the first.
+function currentSet(sets, week) {
+  return sets.find((s) => s.uker.includes(week))
+    || sets.filter((s) => Math.min(...s.uker) <= week).sort((a, b) => Math.max(...b.uker) - Math.max(...a.uker))[0]
+    || sets[0];
+}
+
+// One entry per oppgave, or per part when the book gives parts: "1 a", "1 b", … / "R3.6" / "4.1.2".
+const entries = (set) => set.oppgaver.flatMap((o) => (o.deler && o.deler.length
+  ? o.deler.map((d) => ({ num: o.nr + d, label: `${o.nr} ${d}`, o }))
+  : [{ num: o.nr, label: o.nr, o }]));
 
 // "require" of vault files doesn't work on the iPad, so the shared code is read and run directly.
 async function shared() { return FELLES; }
@@ -762,7 +2019,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
       if (fm?.fag === subject.label && fm.oppgave) done.push(String(fm.oppgave));
     } else if (f.path.startsWith(subject.folder + '/') && f.name.endsWith('.md') && !/\.(notebook|page|ink|excalidraw)\.md$/.test(f.name)) {
       const text = await app.vault.cachedRead(f);
-      for (const m of text.matchAll(/^###\s+Oppg\s+(\d+(?:\.\d+)*\s*[a-z]?)\b/gim)) done.push(m[1].replace(/\s+/g, ''));
+      for (const m of text.matchAll(/^###\s+Oppg\s+([A-Z]?\d+(?:\.\d+)*\s*[a-z]?)\b/gim)) done.push(m[1].replace(/\s+/g, ''));
     }
   }
   // Highest number, and for that number the highest letter (4.1.1 < 4.1.1a < 4.1.1b < 4.1.2).
@@ -776,28 +2033,65 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
   if (inNotebook) tool = 'FineNotes';
   if (inDrawing) tool = 'Excalidraw';
 
+  // The book's own list for this subject: this week's set, the next oppgave first, then the rest of the set.
+  const sets = (await bookSets(app)).filter((s) => s.fag === subject.label);
+  let set = sets.length ? currentSet(sets, window.moment().isoWeek()) : null;
+  // If you're still working on another set (say you're behind the plan), stay in the set you used last.
+  let lastUsed = null;
+  for (const f of app.vault.getMarkdownFiles()) {
+    if (!f.path.startsWith(RECORDS + '/')) continue;
+    const fm = app.metadataCache.getFileCache(f)?.frontmatter;
+    if (fm?.fag === subject.label && fm.sett && (!lastUsed || (f.stat?.mtime || 0) > lastUsed.t)) lastUsed = { t: f.stat?.mtime || 0, sett: fm.sett };
+  }
+  const lastSet = lastUsed && sets.find((s) => s.navn === lastUsed.sett);
+  const doneIn = (s) => {
+    const list = [];
+    for (const f of app.vault.getMarkdownFiles()) {
+      if (!f.path.startsWith(RECORDS + '/')) continue;
+      const fm = app.metadataCache.getFileCache(f)?.frontmatter;
+      if (fm?.fag === subject.label && fm.sett === s.navn && fm.oppgave) list.push(String(fm.oppgave).replace(/\s+/g, ''));
+    }
+    return list;
+  };
+  if (lastSet && entries(lastSet).some((e) => !doneIn(lastSet).includes(e.num))) set = lastSet;
+
   let pick;
   for (;;) {
     const options = [];
+    if (set) {
+      const all = entries(set);
+      const doneHere = doneIn(set);
+      const lastIdx = Math.max(-1, ...doneHere.map((d) => all.findIndex((e) => e.num === d)));
+      const next = all[lastIdx + 1];
+      if (next) options.push({ label: `Neste: ${next.label}${next.o.side ? `  · s. ${next.o.side}` : ''}   (${set.navn})`, entry: next });
+      for (const e of all) if (e !== next) options.push({ label: `${doneHere.includes(e.num) ? '✓ ' : ''}${e.label}${e.o.side ? `  · s. ${e.o.side}` : ''}`, entry: e });
+      if (sets.length > 1) options.push({ label: 'Annet sett …', ask: 'set' });
+    }
     if (lastPart?.letter) {
       const nextLetter = LETTERS[LETTERS.indexOf(lastPart.letter) + 1];
       if (nextLetter) options.push({ label: `Neste del: ${lastPart.base} ${nextLetter}`, num: lastPart.base + nextLetter });
     }
-    if (last) options.push({ label: `Neste: ${nextOf(lastPart.base)}   (etter ${last})`, num: nextOf(lastPart.base) });
+    if (last && !set) options.push({ label: `Neste: ${nextOf(lastPart.base)}   (etter ${last})`, num: nextOf(lastPart.base) });
     if (last) options.push({ label: `Del av ${lastPart.base} (a, b, c …)`, ask: 'letter' });
-    options.push({ label: 'Velg med trykk (kapittel → del → nummer)', ask: 'pick' });
+    if (!set) options.push({ label: 'Velg med trykk (kapittel → del → nummer)', ask: 'pick' });
     options.push({ label: 'Skriv nummer …', ask: 'number' });
     options.push({ label: 'Egen oppgave (ikke fra boka) …', ask: 'own' });
     if (!inNotebook && !inDrawing) options.push({ label: `Tegne i ${tool}  (bytt til ${tool === 'FineNotes' ? 'Excalidraw' : 'FineNotes'})`, toggle: true });
     pick = await quickAddApi.suggester(options.map((o) => o.label), options);
     if (!pick) return;
+    if (pick.ask === 'set') {
+      const chosen = await quickAddApi.suggester(sets.map((s) => `${s.navn}  (uke ${s.uker.join(', ')})`), sets);
+      if (chosen) set = chosen;
+      continue;
+    }
     if (!pick.toggle) break;
     tool = tool === 'FineNotes' ? 'Excalidraw' : 'FineNotes';
     try { localStorage.setItem('oppgave-tool', tool); } catch (e) {}
   }
 
-  let num = pick.num || null;
-  let title = null;
+  let num = pick.entry ? pick.entry.num : pick.num || null;
+  let title = pick.entry ? `Oppg ${pick.entry.label}` : null;
+  const book = pick.entry ? pick.entry.o : null;
   if (pick.ask === 'pick') {
     // Three taps, no keyboard. The chapter and part you worked in last come first.
     const [lc, ls] = last ? parts(last) : [];
@@ -827,7 +2121,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     if (!title) return;
   }
   title = title || `Oppg ${split(num).base}${split(num).letter ? ' ' + split(num).letter : ''}`;
-  const chapter = num ? parts(split(num).base)[0] : await (async (items) => quickAddApi.suggester(items.map((x) => `Kapittel ${x}`), items))(Array.from({ length: 15 }, (_, i) => i + 1));
+  const chapter = book ? set.kapittel : num ? parts(split(num).base.replace(/^[A-Z]/i, ''))[0] : await (async (items) => quickAddApi.suggester(items.map((x) => `Kapittel ${x}`), items))(Array.from({ length: 15 }, (_, i) => i + 1));
 
   const cursor = editor?.getCursor();
   let pageLink, where;
@@ -881,6 +2175,7 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     `fag: ${subject.label}`,
     `oppgave: "${num || title}"`,
     `kapittel: ${chapter || ''}`,
+    ...(book ? [`sett: "${set.navn}"`, `bokside: ${book.side || ''}`] : []),
     `uke: ${window.moment().isoWeek()}`,
     `dato: ${today}`,
     `side: "[[${pageLink}]]"`,
@@ -894,7 +2189,8 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     new obsidian.Notice(`${title} lagret ${where}.`);
   } else {
     editor.setCursor(cursor);
-    editor.replaceSelection(`\n### ${title}\nLes: \n![[${pageLink}]]\n\n`);
+    const les = book && book.lenke ? `[s. ${book.side}](${book.lenke})` : '';
+    editor.replaceSelection(`\n### ${title}\nLes: ${les}\n![[${pageLink}]]\n\n`);
   }
 };
 
