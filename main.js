@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.13.1';
+const VERSION = '1.13.2';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -3001,6 +3001,8 @@ module.exports = class SkoleKnapper extends Plugin {
       if (!quickAddApi) return new Notice('QuickAdd må være på for knappene.');
       await SCRIPTS[b.file]({ app: this.app, quickAddApi, obsidian, ...b.input });
     } catch (e) {
+      // Closing a menu without choosing is not an error.
+      if (/cancel/i.test(String(e && e.message ? e.message : e))) return;
       console.error('Skole-knapper', name, e);
       new Notice('Knappen "' + (b ? b.label : name) + '" feilet: ' + (e && e.message ? e.message : e));
     }
