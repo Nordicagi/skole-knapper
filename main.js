@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.12.2';
+const VERSION = '1.12.3';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -245,6 +245,8 @@ async function addFrame(leaf, name, size, paper = false) {
   const all = api.getViewElements().filter((e) => !e.isDeleted);
   const top = all.length ? Math.max(...all.map((e) => e.y + (e.height || 0))) + 80 : 0;
   const id = api.addFrame(0, top, size.w, size.h, name);
+  // Don't trim lines at page edges: with many lines inside frames, that trimming makes the iPad lag.
+  leaf.view.excalidrawAPI?.updateScene({ appState: { frameRendering: { enabled: true, name: true, outline: true, clip: false } } });
   if (paper) {
     api.style.strokeColor = '#d6d3cc';
     api.style.backgroundColor = '#ffffff';
