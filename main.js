@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.12.1';
+const VERSION = '1.12.2';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -1665,6 +1665,16 @@ module.exports = class SkoleKnapper extends Plugin {
     });
     this.registerEvent(this.app.workspace.on('layout-change', () => this.decorate()));
     this.registerEvent(this.app.workspace.on('active-leaf-change', () => this.decorate()));
+    // A drawing made outside Obsidian (by the Machine) can arrive on a device before Excalidraw knows it,
+    // and then opens as text. Switch any ".excalidraw.md" that opens as text to the drawing view.
+    this.registerEvent(this.app.workspace.on('file-open', (file) => this.openAsDrawing(file)));
+  }
+
+  openAsDrawing(file) {
+    if (!file || !file.path.endsWith('.excalidraw.md') || !this.app.plugins.plugins['obsidian-excalidraw-plugin']) return;
+    const leaf = this.app.workspace.getActiveViewOfType(obsidian.MarkdownView)?.leaf;
+    if (!leaf || leaf.view.file?.path !== file.path) return;
+    leaf.setViewState({ type: 'excalidraw', state: { file: file.path } });
   }
 
   // Phone only: open the phone start page, and set the toolbar and swipe-down to our buttons.
