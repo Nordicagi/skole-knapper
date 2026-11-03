@@ -4,7 +4,7 @@
 const obsidian = require('obsidian');
 const { Plugin, Notice, Platform, setIcon } = obsidian;
 
-const VERSION = '1.13.0';
+const VERSION = '1.13.1';
 
 const FELLES = (function () {
   const module = { exports: {} };
@@ -2189,8 +2189,9 @@ module.exports = async ({ app, quickAddApi, obsidian }) => {
     new obsidian.Notice(`${title} lagret ${where}.`);
   } else {
     editor.setCursor(cursor);
-    const les = book && book.lenke ? `[s. ${book.side}](${book.lenke})` : '';
-    editor.replaceSelection(`\n### ${title}\nLes: ${les}\n![[${pageLink}]]\n\n`);
+    // The Machine's lines are folded, so the note shows your own writing (rule in Machine/AGENTS.md).
+    const les = book && book.lenke ? `> [!info]- Fra boka · s. ${book.side}\n> Les: [s. ${book.side}](${book.lenke})\n\n` : '';
+    editor.replaceSelection(`\n### ${title}\n${les}> [!example]- Tegning\n> ![[${pageLink}]]\n\n`);
   }
 };
 
